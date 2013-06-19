@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<title>Time Selector</title>
+
+	<link rel="stylesheet" href="assets/styles/styles.css" />
+
+	<script src="assets/scripts/vendor/modernizr.custom.min.js"></script>
+	<script src="assets/scripts/vendor/json2.js"></script>
+	<script src="assets/scripts/vendor/jquery-1.9.1.min.js"></script>
+	<script src="assets/scripts/vendor/moment-2.0.0.min.js"></script>
+	<script src="assets/scripts/vendor/mustache-0.7.2.js"></script>
+	<script src="assets/scripts/vendor/underscore-1.4.4.min.js"></script>
+	<script src="assets/scripts/vendor/backbone-1.0.0.min.js"></script>
+	<script src="assets/scripts/classes/time-selector.js"></script>
+
+	<script>
+		$(function () {
+			var timeSelector = new TimeSelector();
+		});
+	</script>
+
+</head>
+<body>
+
+	<div id="content">
+
+		<div id="app"></div>
+
+		<script id="tmpTimeSelector" type="text/template">
+			<select name="hour">
+				<option value="1">01</option>
+				<option value="2">02</option>
+				<option value="3">03</option>
+				<option value="4">04</option>
+				<option value="5">05</option>
+				<option value="6">06</option>
+				<option value="7">07</option>
+				<option value="8">08</option>
+				<option value="9">09</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+
+			</select>
+			<select name="minute">
+				<option value="0">00</option>
+				<option value="5">05</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+				<option value="30">30</option>
+				<option value="35">35</option>
+				<option value="40">40</option>
+				<option value="45">45</option>
+				<option value="50">50</option>
+				<option value="55">55</option>
+			</select>
+			<select name="ampm">
+				<option value="AM">AM</option>
+				<option value="PM">PM</option>
+			</select>
+		</script>
+
+	</div>
+
+</body>
+</html>
