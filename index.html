@@ -29,10 +29,11 @@
 
 	<div id="content">
 
-		<div id="app"></div>
+		<fieldset id="time-selector"></fieldset>
+		<fieldset class="time-selector"></fieldset>
 
 		<script id="tmpTimeSelector" type="text/template">
-			<select name="hour">
+			<select name="hour" class="hour">
 				<option value="1">01</option>
 				<option value="2">02</option>
 				<option value="3">03</option>
@@ -47,7 +48,7 @@
 				<option value="12">12</option>
 
 			</select>
-			<select name="minute">
+			<select name="minute" class="minute">
 				<option value="0">00</option>
 				<option value="5">05</option>
 				<option value="10">10</option>
@@ -61,7 +62,7 @@
 				<option value="50">50</option>
 				<option value="55">55</option>
 			</select>
-			<select name="ampm">
+			<select name="ampm" class="ampm">
 				<option value="AM">AM</option>
 				<option value="PM">PM</option>
 			</select>
