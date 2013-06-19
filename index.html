@@ -19,8 +19,28 @@
 	<script src="assets/scripts/classes/time-selector.js"></script>
 
 	<script>
+		var el;
+		var app;
+		var date = new Date("May 5, 1969 00:00:01");
+		//var date = new Date();
+		var App = Backbone.View.extend({
+			initialize: function(){
+				this.render();
+			},
+			render: function(){
+				var timeSelector = new TimeSelector({date:date});
+				var html = timeSelector.el;
+				//console.log(html);
+				this.$el.html(html);
+				return this;
+			}
+		});
 		$(function () {
-			var timeSelector = new TimeSelector();
+			$(document).on('TimeSelector:gotTime', function(e,date){
+				console.log(date);
+			});
+			el = $('#app-time-selector');
+			app = new App({el:el});
 		});
 	</script>
 
@@ -29,9 +49,8 @@
 
 	<div id="content">
 
-		<fieldset id="time-selector"></fieldset>
-		<fieldset class="time-selector"></fieldset>
-
+		<div id="app-time-selector"></div>
+		
 		<script id="tmpTimeSelector" type="text/template">
 			<select name="hour" class="hour">
 				<option value="1">01</option>
@@ -46,7 +65,6 @@
 				<option value="10">10</option>
 				<option value="11">11</option>
 				<option value="12">12</option>
-
 			</select>
 			<select name="minute" class="minute">
 				<option value="0">00</option>
