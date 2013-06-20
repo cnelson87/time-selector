@@ -16,16 +16,33 @@
 	<script src="assets/scripts/vendor/mustache-0.7.2.js"></script>
 	<script src="assets/scripts/vendor/underscore-1.4.4.min.js"></script>
 	<script src="assets/scripts/vendor/backbone-1.0.0.min.js"></script>
-	<script src="assets/scripts/classes/time-selector.js"></script>
+	<script src="assets/scripts/views/time-selector.js"></script>
 
 	<script>
+		var el, app;
+		var date = new Date();
+		//date = new Date('May 5, 1969 00:00:01');
+		var App = Backbone.View.extend({
+			initialize: function(){
+				this.timeSelector = new TimeSelector({date:date});
+				this.listenTo(this.timeSelector, 'TimeSelector:gotTime', this.onGotTime);
+				this.render();
+			},
+			render: function(){
+				var html = this.timeSelector.el;
+				this.$el.html(html);
+				//return this;
+			},
+			onGotTime: function(date){
+				console.log(date);
+			}
+		});
 		$(document).on('TimeSelector:gotTime', function(e,date){
 			console.log(date);
 		});
 		$(function () {
-			var el = $('#app-time-selector');
-			var date = new Date('May 5, 1969 00:00:01');
-			var timeSelector = new TimeSelector(el, {date:date});
+			el = $('#app-time-selector');
+			app = new App({el:el});
 		});
 	</script>
 
@@ -34,7 +51,9 @@
 
 	<div id="content">
 
-		<fieldset id="app-time-selector" class="time-selector">
+		<div id="app-time-selector"></div>
+		
+		<script id="tmpTimeSelector" type="text/template">
 			<select name="hour" class="hour">
 				<option value="1">01</option>
 				<option value="2">02</option>
@@ -67,7 +86,7 @@
 				<option value="AM">AM</option>
 				<option value="PM">PM</option>
 			</select>
-		</fieldset>
+		</script>
 
 	</div>
 

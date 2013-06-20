@@ -1,40 +1,49 @@
 
-var TimeSelector = Backbone.View.extend({
-	tagName: 'fieldset',
-	className: 'time-selector',
-	template: $('#tmpTimeSelector').html(),
-	date: null,
-	events: {
-		'change select': 'onSelectChange'
+var TimeSelector = function ($el, objOptions) {
+
+	this.el = $el;
+	this.options = $.extend({
+		selectorHour: '.hour',
+		selectorMinute: '.minute',
+		selectorAmpm: '.ampm',
+		date: null
+	}, objOptions || {});
+
+	this.elHour = this.el.find(this.options.selectorHour);
+	this.elMinute = this.el.find(this.options.selectorMinute);
+	this.elAmpm = this.el.find(this.options.selectorAmpm);
+
+	this.date = this.options.date || new Date();
+
+	this._bindEvents();
+
+	this.setTime();
+
+};
+
+TimeSelector.prototype = {
+	_bindEvents: function () {
+		var self = this;
+
+		this.el.on('change', 'select', function (e) {
+			self.__onSelectChange(e);
+		});
+
 	},
 
-	initialize: function(){
-		if (this.options.date) {
-			this.date = new Date((typeof this.options.date === 'string') ? this.options.date : this.options.date.toISOString());
-		} else {
-			this.date = new Date();
-		}
-
-		this.template = $('#tmpTimeSelector').html();
-		this.render();
-
-		this.elHour = this.el.querySelector('.hour');
-		this.elMinute = this.el.querySelector('.minute');
-		this.elAmpm = this.el.querySelector('.ampm');
-
-		this.setTime();
+	__onSelectChange: function (e) {
 		this.getTime();
-
 	},
 
-	onSelectChange: function(e){
-		this.getTime();
-	},
 
-	getTime: function(){
-		var ampm = this.elAmpm.value;
-		var hour = this.elHour.value *1;
-		var minute = this.elMinute.value *1;
+/**
+*	Public Methods
+**/
+
+	getTime: function () {
+		var ampm = this.elAmpm.val();
+		var hour = this.elHour.val() *1;
+		var minute = this.elMinute.val() *1;
 		if (ampm === 'AM' && hour === 12) {
 			hour = 0;
 		}
@@ -45,13 +54,11 @@ var TimeSelector = Backbone.View.extend({
 		this.date.setHours(hour);
 		this.date.setMinutes(minute);
 
-		//console.log(this.date);
 		$.event.trigger('TimeSelector:gotTime', [this.date]);
-		return this.date;
 
 	},
 
-	setTime: function(){
+	setTime: function () {
 		var ampm = 'AM';
 		var hour = this.date.getHours();
 		var minute = this.date.getMinutes();
@@ -67,19 +74,13 @@ var TimeSelector = Backbone.View.extend({
 			hour = 12;
 		}
 
-		this.elHour.value = hour;
-		this.elMinute.value = minute;
-		this.elAmpm.value = ampm;
+		this.elHour.val(hour);
+		this.elMinute.val(minute);
+		this.elAmpm.val(ampm);
 
+		this.date.setSeconds(1);
 		this.date.setMinutes(minute);
 
-	},
-
-	render: function(){
-		var html = Mustache.to_html(this.template);
-		//console.log(html);
-		this.$el.html(html);
-		return this;
 	}
 
-});
+};
