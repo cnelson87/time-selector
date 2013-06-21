@@ -24,8 +24,9 @@
 		});
 		$(function () {
 			var el = $('#app-time-selector');
-			var date = new Date('May 5, 1969 00:00:01');
-			var timeSelector = new TimeSelector(el, {date:date});
+			var dateStr = '2009-10-20T15:20:22-07:00';
+			var dateObj = new Date(dateStr);
+			var timeSelector = new TimeSelector(el, {date:dateStr});
 		});
 	</script>
 

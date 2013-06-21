@@ -9,12 +9,10 @@ var TimeSelector = Backbone.View.extend({
 	},
 
 	initialize: function () {
-		if (this.options.date) {
-			this.date = new Date((typeof this.options.date === 'string') ? this.options.date : this.options.date.toISOString());
-		} else {
-			this.date = new Date();
-		}
 
+		this.date = this.options.date ? moment(this.options.date).toDate() : new Date();
+
+		// TODO: un-hard-coded template
 		this.template = $('#tmpTimeSelector').html();
 		this.render();
 

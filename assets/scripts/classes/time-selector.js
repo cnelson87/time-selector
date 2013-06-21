@@ -9,11 +9,11 @@ var TimeSelector = function ($el, objOptions) {
 		date: null
 	}, objOptions || {});
 
+	this.date = this.options.date ? moment(this.options.date).toDate() : new Date();
+
 	this.elHour = this.el.find(this.options.selectorHour);
 	this.elMinute = this.el.find(this.options.selectorMinute);
 	this.elAmpm = this.el.find(this.options.selectorAmpm);
-
-	this.date = this.options.date || new Date();
 
 	this._bindEvents();
 
