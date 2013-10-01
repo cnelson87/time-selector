@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<title>Time Selector</title>
+
+	<link rel="stylesheet" href="assets/styles/styles.css" />
+
+	<script src="assets/scripts/vendor/modernizr.custom.min.js"></script>
+	<script src="assets/scripts/vendor/json2.js"></script>
+	<script src="assets/scripts/vendor/jquery-1.9.1.min.js"></script>
+	<script src="assets/scripts/vendor/moment-2.0.0.min.js"></script>
+	<script src="assets/scripts/vendor/mustache-0.7.2.js"></script>
+	<script src="assets/scripts/vendor/underscore-1.4.4.min.js"></script>
+	<script src="assets/scripts/vendor/backbone-1.0.0.min.js"></script>
+
+	<script>
+		$(function () {
+
+			// Timezone testing
+			var locDate = new Date(); // local date
+			var orgDate = new Date(locDate.getTime()); // clone local date
+
+			var locTimezoneOffset = locDate.getTimezoneOffset() / 60; // returns timezome offset in hrs
+			//var orgTimezoneOffset = 4; // New York
+			var orgTimezoneOffset = 3; // New York, pre-adjusted for DST
+			//var orgTimezoneOffset = 10; // Hawaii
+			//var orgTimezoneOffset = 9; // Hawaii, pre-adjusted for DST
+			var offsetAdj = orgTimezoneOffset - locTimezoneOffset;
+
+			orgDate.setHours(orgDate.getHours() - offsetAdj);
+			
+			console.log(locDate);
+			console.log(orgDate);
+
+		});
+	</script>
+
+</head>
+<body>
+
+	<div id="content">
+
+
+
+	</div>
+
+</body>
+</html>
