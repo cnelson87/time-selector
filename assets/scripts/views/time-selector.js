@@ -8,7 +8,7 @@ var TimeSelector = Backbone.View.extend({
 		'change select': '__onSelectChange'
 	},
 
-	initialize: function () {
+	initialize: function() {
 
 		this.date = this.options.date ? moment(this.options.date).toDate() : new Date();
 
@@ -24,7 +24,7 @@ var TimeSelector = Backbone.View.extend({
 
 	},
 
-	_initSelectors: function () {
+	_initSelectors: function() {
 		var ampm = 'AM';
 		var hour = this.date.getHours();
 		var minute = this.date.getMinutes();
@@ -49,11 +49,11 @@ var TimeSelector = Backbone.View.extend({
 
 	},
 
-	__onSelectChange: function (e) {
+	__onSelectChange: function(e) {
 		this.getTime();
 	},
 
-	getTime: function () {
+	getTime: function() {
 		var ampm = this.elAmpm.value;
 		var hour = this.elHour.value *1;
 		var minute = this.elMinute.value *1;
@@ -72,7 +72,7 @@ var TimeSelector = Backbone.View.extend({
 
 	},
 
-	render: function () {
+	render: function() {
 		var html = Mustache.to_html(this.template);
 		this.$el.html(html);
 	}

@@ -19,10 +19,10 @@
 	<script src="assets/scripts/classes/time-selector.js"></script>
 
 	<script>
-		$(document).on('TimeSelector:gotTime', function(e,date){
+		$(document).on('TimeSelector:gotTime', function(e,date) {
 			console.log(date);
 		});
-		$(function () {
+		$(function() {
 			var el = document.getElementById('app-time-selector');
 			var dateStr = '2009-10-20T15:20:22-07:00';
 			var dateObj = new Date(dateStr);

@@ -1,5 +1,5 @@
 
-var TimeSelector = function (el, objOptions) {
+var TimeSelector = function(el, objOptions) {
 
 	this.el = el;
 	this.$el = $(el);
@@ -15,8 +15,7 @@ var TimeSelector = function (el, objOptions) {
 };
 
 TimeSelector.prototype = {
-	_init: function () {
-		var self = this;
+	_init: function() {
 
 		this.date = this.options.date ? moment(this.options.date).toDate() : new Date();
 
@@ -31,7 +30,7 @@ TimeSelector.prototype = {
 
 	},
 
-	_initSelectors: function () {
+	_initSelectors: function() {
 		var ampm = 'AM';
 		var hour = this.date.getHours();
 		var minute = this.date.getMinutes();
@@ -56,16 +55,15 @@ TimeSelector.prototype = {
 
 	},
 
-	_bindEvents: function () {
-		var self = this;
+	_bindEvents: function() {
 
-		this.elSelects.on('change', function (e) {
-			self.__onSelectChange(e);
-		});
+		this.elSelects.on('change', function(e) {
+			this.__onSelectChange(e);
+		}.bind(this));
 
 	},
 
-	__onSelectChange: function (e) {
+	__onSelectChange: function(e) {
 		this.getTime();
 	},
 
@@ -74,7 +72,7 @@ TimeSelector.prototype = {
 *	Public Methods
 **/
 
-	getTime: function () {
+	getTime: function() {
 		var ampm = this.elAmpm.val();
 		var hour = this.elHour.val() *1;
 		var minute = this.elMinute.val() *1;
