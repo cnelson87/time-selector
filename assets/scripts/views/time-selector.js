@@ -8,7 +8,8 @@ var TimeSelector = Backbone.View.extend({
 		'change select': '__onSelectChange'
 	},
 
-	initialize: function() {
+	initialize: function(options) {
+		this.options = options || {};
 
 		this.date = this.options.date ? moment(this.options.date).toDate() : new Date();
 
