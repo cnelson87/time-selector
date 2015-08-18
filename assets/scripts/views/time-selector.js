@@ -1,7 +1,7 @@
 
 var TimeSelector = Backbone.View.extend({
 	tagName: 'fieldset',
-	className: 'time-selector',
+	className: 'time-selector text-fields',
 	template: null,
 	date: null,
 	events: {

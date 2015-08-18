@@ -9,13 +9,14 @@
 
 	<link rel="stylesheet" href="assets/styles/styles.css" />
 
-	<!--[if IE 9]><script src="_ui/js/shims/classList.js"></script><![endif]-->
+	<!--[if IE 9]><script src="assets/scripts/shims/classList.js"></script><![endif]-->
 	<script src="assets/scripts/vendor/modernizr.custom.min.js"></script>
 	<script src="assets/scripts/vendor/jquery.min.js"></script>
+	<script src="assets/scripts/vendor/mustache.min.js"></script>
 	<script src="assets/scripts/vendor/underscore.min.js"></script>
 	<script src="assets/scripts/vendor/moment.min.js"></script>
-	<script src="assets/scripts/vendor/mustache.js"></script>
 	<script src="assets/scripts/vendor/backbone.min.js"></script>
+	<script src="assets/scripts/vendor/backbone-super.min.js"></script>
 	<script src="assets/scripts/views/time-selector.js"></script>
 
 	<script>
@@ -51,41 +52,48 @@
 
 	<div id="content">
 
+		<h1>Time Selector</h1>
+
 		<div id="app-time-selector"></div>
 		
 		<script id="tmpTimeSelector" type="text/template">
-			<select name="hour" class="hour">
-				<option value="1">01</option>
-				<option value="2">02</option>
-				<option value="3">03</option>
-				<option value="4">04</option>
-				<option value="5">05</option>
-				<option value="6">06</option>
-				<option value="7">07</option>
-				<option value="8">08</option>
-				<option value="9">09</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
-			</select>
-			<select name="minute" class="minute">
-				<option value="0">00</option>
-				<option value="5">05</option>
-				<option value="10">10</option>
-				<option value="15">15</option>
-				<option value="20">20</option>
-				<option value="25">25</option>
-				<option value="30">30</option>
-				<option value="35">35</option>
-				<option value="40">40</option>
-				<option value="45">45</option>
-				<option value="50">50</option>
-				<option value="55">55</option>
-			</select>
-			<select name="ampm" class="ampm">
-				<option value="AM">AM</option>
-				<option value="PM">PM</option>
-			</select>
+			<ol>
+				<li>
+					<label class="block">Label for Time Selector</label>
+					<select name="hour" class="hour">
+						<option value="1">01</option>
+						<option value="2">02</option>
+						<option value="3">03</option>
+						<option value="4">04</option>
+						<option value="5">05</option>
+						<option value="6">06</option>
+						<option value="7">07</option>
+						<option value="8">08</option>
+						<option value="9">09</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+					<select name="minute" class="minute">
+						<option value="0">00</option>
+						<option value="5">05</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+						<option value="25">25</option>
+						<option value="30">30</option>
+						<option value="35">35</option>
+						<option value="40">40</option>
+						<option value="45">45</option>
+						<option value="50">50</option>
+						<option value="55">55</option>
+					</select>
+					<select name="ampm" class="ampm">
+						<option value="AM">AM</option>
+						<option value="PM">PM</option>
+					</select>
+				</li>
+			</ol>
 		</script>
 
 	</div>
