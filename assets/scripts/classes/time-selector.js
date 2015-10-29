@@ -7,7 +7,8 @@ var TimeSelector = function(el, objOptions) {
 		selectorHour: '.hour',
 		selectorMinute: '.minute',
 		selectorAmpm: '.ampm',
-		date: null
+		date: null,
+		customEventName: 'TimeSelector'
 	}, objOptions || {});
 
 	this._init();
@@ -86,7 +87,7 @@ TimeSelector.prototype = {
 		this.date.setHours(hour);
 		this.date.setMinutes(minute);
 
-		$.event.trigger('TimeSelector:gotTime', [this.date]);
+		$.event.trigger(this.options.customEventName + ':gotTime', [this.date]);
 
 	},
 

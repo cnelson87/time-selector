@@ -1,9 +1,11 @@
 
-var TimeSelector = Backbone.View.extend({
+var TimeSelectorView = Backbone.View.extend({
+
 	tagName: 'fieldset',
 	className: 'time-selector text-fields',
-	template: null,
+
 	date: null,
+
 	events: {
 		'change select': '__onSelectChange'
 	},

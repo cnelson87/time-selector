@@ -13,28 +13,28 @@
 	<script src="assets/scripts/vendor/modernizr.custom.min.js"></script>
 	<script src="assets/scripts/vendor/jquery.min.js"></script>
 	<script src="assets/scripts/vendor/mustache.min.js"></script>
-	<script src="assets/scripts/vendor/underscore.min.js"></script>
 	<script src="assets/scripts/vendor/moment.min.js"></script>
-	<script src="assets/scripts/vendor/backbone.min.js"></script>
-	<script src="assets/scripts/vendor/backbone-super.min.js"></script>
-	<script src="assets/scripts/views/time-selector.js"></script>
+	<script src="assets/scripts/vendor/underscore-min.js"></script>
+	<script src="assets/scripts/vendor/backbone-min.js"></script>
+	<script src="assets/scripts/vendor/backbone-super-min.js"></script>
+	<script src="assets/scripts/views/time-selector-view.js"></script>
 
 	<script>
 		var el, app;
 		var dateStr = '2009-10-20T15:20:22-07:00';
 		var dateObj = new Date(dateStr);
 		var App = Backbone.View.extend({
-			initialize: function(){
-				this.timeSelector = new TimeSelector({date:dateStr});
+			initialize: function() {
+				this.timeSelector = new TimeSelectorView({date:dateStr});
 				this.listenTo(this.timeSelector, 'TimeSelector:gotTime', this.onGotTime);
 				this.render();
 			},
-			render: function(){
+			render: function() {
 				var html = this.timeSelector.el;
 				this.$el.html(html);
 				//return this;
 			},
-			onGotTime: function(date){
+			onGotTime: function(date) {
 				console.log(date);
 			}
 		});
